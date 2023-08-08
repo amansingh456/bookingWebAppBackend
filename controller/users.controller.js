@@ -31,7 +31,7 @@ const getUser = async(req,res,next)=>{
     const getID = req.params.id
     try {
        const getUser =  await UserModel.findById(getID)
-        console.log("Here is the Hotle....")
+        console.log("Here is the User....")
         res.status(200).json(getUser)   
     } catch (error) {
             // res.status(500).json({"error":error}) 

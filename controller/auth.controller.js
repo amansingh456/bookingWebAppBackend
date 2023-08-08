@@ -19,10 +19,12 @@ const registerUser = async(req,res,next)=>{
 }
 
 const loginUser = async(req,res,next)=>{
-    // const {userName,password} = req.body
+    
     try {
         const user = await UserModel.findOne({userName:req.body.userName})
+        
         if(!user) return next(createError(404,"User not found"))
+        
 
         const isPasswordCorrect = await bcrypt.compare(req.body.password, user.password)
         if(!isPasswordCorrect) return next(createError(400,"Wrong Password"))
